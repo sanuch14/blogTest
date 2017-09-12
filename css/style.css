@@ -1,0 +1,51 @@
+@import "bootstrap.css";
+/*@import "bootstrap-theme.css";*/
+a.spoiler:after{
+	content: "[-]";
+}
+a.spoiler.collapsed:after{
+	content: "[+]";
+}
+.nav-tabs{
+	margin-bottom: 15px;
+}
+h1.title{
+	margin-top: 0px;
+}
+html {
+	position: relative;
+	min-height: 100%;
+}
+body {
+	/* Margin bottom by footer height */
+	margin-bottom: 60px;
+}
+.footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	/* Set the fixed height of the footer here */
+	height: 60px;
+	background-color: #222;
+	color: #bdbec4;
+}
+i.thumbs-up{
+	color: #4acb24;
+}
+i.thumbs-down{
+	color: #ee2707;
+}
+div.comment-btn{
+	margin-top: 10px;
+}
+button.comment-btn{
+	margin-right: 10px;
+}
+div.down-btn{
+	margin-bottom: 20px;
+}
+span.welcome{
+	color: #ced1cd;
+	font-weight: 700;
+	margin-right: 10px;
+}
