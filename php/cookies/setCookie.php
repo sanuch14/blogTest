@@ -1,7 +1,7 @@
 <?php
-	setcookie('name',$_GET['name'], time()+300,'/');
-	setcookie('privileges',$_GET['privileges'], time()+300, '/');
-	setcookie('id',$_GET['id'], time()+300, '/');
+	setcookie('name',$_GET['name'], time()+600,'/');
+	setcookie('privileges',$_GET['privileges'], time()+600, '/');
+	setcookie('id',$_GET['id'], time()+600, '/');
 	echo 'hi';
 ?>
 <!DOCTYPE html>
