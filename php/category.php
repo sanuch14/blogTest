@@ -5,20 +5,25 @@
 	require_once 'pageParts/PagePart.php';
 	include 'dbService/DataBase.php';
 
+	$head = new PagePart();
 	$categoryName = DataBase::getCategoryName($_GET['id']);
 
-	$head = new PagePart();
 	echo $head->getHead(Constants::CATEGORY.$categoryName['category_name']);
+
+	$numberOfArticles=DataBase::countArticlesWithId($_GET['id']);
+	$numberOfPages = ceil($numberOfArticles/10)+1;
+	$currentArticle = isset($_GET['begin']) ? (int)$_GET['begin']: 0 ;
+	$currentPage = ($currentArticle+10)/10;
 ?>
 
 <body>
 <?php include 'pageParts/header.php'; ?>
 <div class="container">
-	<h1 class="title"><?php echo Constants::CATEGORY.$categoryName['category_name'];?></h1>
+	<h1 class="title"><?php echo Constants::MAIN;?></h1>
 
 	<div class="row">
 		<?php
-		$data = DataBase::getCategoryType($_GET['id'], 0, 10);
+		$data = DataBase::getCategoryType($_GET['id'], $currentArticle, 10);
 		while($row=$data->fetch(PDO::FETCH_ASSOC)){ ?>
 			<div class="col-sm-6 col-xs-12">
 				<div class="thumbnail">
@@ -60,14 +65,12 @@
 	<nav class="text-center">
 		<ul class="pagination">
 			<?php
-				$numb = DataBase::countArticlesWithId($_GET['id']);
-				$numb=ceil(($numb/10)+1);
-				for($i = 1; $i<$numb; $i++){ ?>
-					<li <?php if($i==1) echo 'class="active"';?>>
-						<a href="/php/categoryPagination.php?begin=<?php echo ($i-1)*10;?>&id=<?php echo $_GET['id'];?>"><?php echo $i;?></a>
-					</li>
-					<?php
-				}
+			for($i = 1; $i<$numberOfPages; $i++){ ?>
+				<li <?php if($i==$currentPage) echo 'class="active"';?>>
+					<a href="/php/category.php?begin=<?php echo ($i-1)*10;?>&id=<?php echo $_GET['id'];?>"><?php echo $i;?></a>
+				</li>
+				<?php
+			}
 			?>
 		</ul>
 	</nav>

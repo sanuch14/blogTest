@@ -12,7 +12,7 @@
 	$tmp=$tmp->fetch(PDO::FETCH_ASSOC);
 	$numberOfArticles = (int)$tmp['number'];
 	$numberOfPages = ceil($numberOfArticles/10)+1;
-	$currentArticle = (count($_GET)) ? (int)$_GET['begin'] : 0;
+	$currentArticle = isset($_GET['begin']) ? (int)$_GET['begin'] : 0;
 	$currentPage = ($currentArticle+10)/10;
 
 
