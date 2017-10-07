@@ -35,7 +35,7 @@
 					</li>
 					<li><a href="/php/about.php">Про автора</a></li>
 					<?php
-						if(count($_COOKIE)){
+						if(isset($_COOKIE['privileges'])){
 							if($_COOKIE['privileges']=="admin" ){
 								echo "<li><a href=\"/php/newarticle.php\">Створити статтю</a></li>";
 							}
@@ -45,7 +45,7 @@
 				<div class="navbar-form navbar-right">
 					<?php
 						$tmp;
-						if(!count($_COOKIE)){
+						if(!isset($_COOKIE['name'])){
 							$tmp = "<button id=\"logBtn\" type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#form\">
 										<span class=\"glyphicon glyphicon-log-in\"></span>  Авторизація
 									</button>";
